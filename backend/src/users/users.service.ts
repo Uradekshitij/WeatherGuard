@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 
 import {
   Injectable,
+  BadRequestException,
 } from '@nestjs/common';
 
 import {
@@ -28,7 +29,7 @@ export class UsersService {
   ) {
     const existingUser =
       await this.userModel.findOne({
-        email: dto.email,
+        email: data.email,
       });
 
     if (existingUser) {
@@ -36,6 +37,7 @@ export class UsersService {
         'Email already exists',
       );
     }
+
     return this.userModel.create(data);
   }
 
@@ -80,21 +82,27 @@ export class UsersService {
   }
 
   async createAdmin() {
-  const existingAdmin = await this.userModel.findOne({
-    email: 'admin@gmail.com',
-  });
+    const existingAdmin =
+      await this.userModel.findOne({
+        email: 'admin@gmail.com',
+      });
 
-  if (existingAdmin) return;
+    if (existingAdmin) {
+      return;
+    }
 
-  const hashedPassword =
-    await bcrypt.hash('admin123', 10);
+    const hashedPassword =
+      await bcrypt.hash(
+        'admin123',
+        10,
+      );
 
-  await this.userModel.create({
-    name: 'Admin',
-    email: 'admin@gmail.com',
-    password: hashedPassword,
-    role: 'admin',
-    status: 'approved',
-  });
-}
+    await this.userModel.create({
+      name: 'Admin',
+      email: 'admin@gmail.com',
+      password: hashedPassword,
+      role: 'admin',
+      status: 'approved',
+    });
+  }
 }

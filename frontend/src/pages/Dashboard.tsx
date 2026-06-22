@@ -41,11 +41,11 @@ Loading Dashboard... </div>
 );
 }
 
-return ( <div className="min-h-screen bg-gray-100 p-8"> <div className="max-w-7xl mx-auto"> <div className="flex justify-between items-center mb-8"> <div> <h1 className="text-4xl font-bold text-gray-800">
+return ( <div className="min-h-screen w-full bg-gray-100 p-8 mb-8"> <div className="w-full mb-5"> <div className="flex justify-between items-center mb-8"> <div> <h1 className="text-4xl font-bold text-gray-800">
 WeatherGuard Admin </h1>
 
 
-        <p className="text-gray-500 mt-1">
+        <p className="text-gray-500 mt-4">
           Invitation Based Weather Alert System
         </p>
       </div>
@@ -58,9 +58,9 @@ WeatherGuard Admin </h1>
       </button>
     </div>
 
-    <div className="grid md:grid-cols-3 gap-6 mb-8">
+    <div className="grid md:grid-cols-3 gap-6 mb-8 mt-8">
       <div className="bg-white rounded-xl shadow p-6">
-        <h3 className="text-gray-500">
+        <h3 className="text-gray-500 mt-6">
           Pending Users
         </h3>
 
@@ -69,7 +69,7 @@ WeatherGuard Admin </h1>
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white rounded-xl shadow p-6 mt-7 mb-5">
         <h3 className="text-gray-500">
           Approved Users
         </h3>
@@ -79,7 +79,7 @@ WeatherGuard Admin </h1>
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white rounded-xl shadow p-6 mt-5 mb-5">
         <h3 className="text-gray-500">
           Weather Alerts
         </h3>
